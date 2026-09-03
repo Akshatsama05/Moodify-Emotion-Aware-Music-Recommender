@@ -1,0 +1,111 @@
+language,emotion,rank,song_name,artist,emotion_score,emotion_evidence,similarity,rank_score
+English,sadness,1,The Way We Say Goodbye,Circa Waves,0.956469,0.3759364586947657,0.0,0.7025283
+English,sadness,2,Would You Rather Be Lonely,Red Rum Club,0.949816,0.364,0.0,0.7018712
+English,sadness,3,Never Be Lonely,The Feeling,0.949816,0.364,0.0,0.7008712
+English,sadness,4,One More Day Won’t Hurt,SOFT PLAY,0.949816,0.364,0.0,0.6998712
+English,sadness,5,"Giulio Cesare, HWV 17, Act III Scene 1: Flow, my tears (Cleopatra)",George Frideric Handel Sir Charles Mackerras English National Opera Orchestra Valerie Masterson,0.954007,0.3721450599993142,0.0,0.6978049000000001
+English,joy,1,Too Much Fun,Sea Girls,0.956437,0.3758758768867963,0.0,0.7035059
+English,joy,2,Sure Feels Good,Willie J Healey,0.949816,0.364,0.0,0.7008712
+English,joy,3,Are We Having Any Fun Yet?,Larkins,0.954738,0.3726724982980101,0.0,0.6963166
+English,joy,4,Happy Family,Sundara Karma,0.952816,0.3691852193491867,0.0,0.6949712
+English,joy,5,Are We Having Any Fun yet? - Ayokay Remix,Larkins ayokay,0.954075,0.3714539672488476,0.0,0.6918525
+English,love,1,So Long Forever,Palace,0.956624,0.3762357215901376,0.0,0.7156368000000001
+English,love,2,Are You in Love With a Notion?,Courteeners,0.952681,0.368945206609224,0.0,0.7148767
+English,love,3,At Most A Kiss,Blossoms,0.958604,0.3801392245503956,0.0,0.7140228
+English,love,4,Heart On My Sleeve,The K's,0.955754,0.3753414745460546,0.0,0.7110278
+English,love,5,Wild Heart,Saint Raymond,0.958328,0.3795840677552656,0.0,0.7058296
+English,love,6,Let's Leave Together,Circa Waves,0.464563,0.117396232787846,0.0,0.37219409999999997
+English,love,7,Not Nineteen Forever,Courteeners,0.435915,0.1081345744659631,0.0,0.3591405
+English,love,8,That Kiss - Remastered 2022,Courteeners,0.447766,0.1119789212112031,0.0,0.3494362
+English,love,9,Tough Love,Flyte Laura Marling,0.428727,0.1057911601888935,0.0,0.3481089
+English,love,10,My Cheating Heart,Love Fame Tragedy,0.441884,0.1100734504608542,0.0,0.34131880000000003
+English,anger,1,Fight On,The Lathums,0.949816,0.364,0.0,0.7148712
+English,anger,2,"Suite d'Abdelazer: or, the moor's revenge: Rondeau",Henry Purcell Ensemble Orchestral Harmonia Nova & Didier Bouture Didier Bouture Ensemble Orchestral Harmonia Nova,0.954927,0.3730223881788028,0.0,0.7084488999999999
+English,anger,3,Hate the Player,The Clause,0.949816,0.364,0.0,0.6908712
+English,anger,4,Mad Mind,Bad Nerves,0.949816,0.364,0.0,0.6878712
+English,anger,5,Red Flags & Warning Signs,The Lilacs,0.776396,0.2659999999999999,0.0,0.5664772
+English,fear,1,Your Ghost,Circa Waves,0.957787,0.3785060730880196,0.0,0.7034509
+English,fear,2,Panic Like Tom,Riscas,0.957728,0.3783907586571676,0.0,0.6974096
+English,fear,3,I Saw A Ghost,The Slow Readers Club,0.957568,0.3780741821042164,0.0,0.6972976
+English,fear,4,I See Your Ghost,The Lathums,0.956273,0.3755621188403072,0.0,0.6953911
+English,fear,5,Nightmares & Ice Cream,Palace,0.847556,0.2659999999999999,0.0,0.6262892
+English,fear,6,Ghost,The Reytons,0.460214,0.1159964653408061,0.0,0.35214979999999996
+English,fear,7,Red Flags & Warning Signs,The Lilacs,0.111889,0.1110275191754088,0.0,0.1013223
+English,surprise,1,Black Magic,The Amazons,0.990708,0.5022956660656951,0.0,0.7354956
+English,surprise,2,Black Magic - Acoustic,The Amazons,0.99031,0.4989129541166455,0.0,0.727217
+English,surprise,3,Wow!!!7AM,SOFT PLAY,0.96061,0.3842792359392535,0.0,0.6954269999999999
+English,surprise,4,Oh My Love,The Lathums,0.783551,0.2659999999999999,0.0,0.5854857
+Hindi,sadness,1,"Teri Hogaiyaan - From ""Broken But Beautiful Season 2""",Vishal Mishra,0.988203,0.483,0.0,0.7467421000000001
+Hindi,sadness,2,Judaai,Sachin-Jigar Rekha Bhardwaj Arijit Singh,0.961706,0.3866285830285486,0.0,0.7361941999999999
+Hindi,sadness,3,Judai,Pritam Kamran Ahmed,0.961878,0.387002242303579,0.0,0.7283146
+Hindi,sadness,4,Bewafa Tera Masoom Chehra,Rochak Kohli Jubin Nautiyal Rashmi Virag,0.937809,0.3772305012688854,0.0,0.7144663
+Hindi,sadness,5,"Tujhe Kitna Chahne Lage (From ""Kabir Singh"")",Arijit Singh Mithoon,0.847556,0.2659999999999999,0.0,0.6672891999999999
+Hindi,sadness,6,Bin Tere,Vishal-Shekhar Shafqat Amanat Ali Sunidhi Chauhan,0.847556,0.2659999999999999,0.0,0.6592891999999999
+Hindi,sadness,7,Channa Mereya,Pritam Arijit Singh,0.847556,0.2659999999999999,0.0,0.6592891999999999
+Hindi,sadness,8,Main Dhoondne Ko Zamaane Mein,Arijit Singh,0.847556,0.2659999999999999,0.0,0.6552891999999999
+Hindi,sadness,9,"Jiya Dhadak Dhadak Jaye - From ""Kalyug""",Rahat Fateh Ali Khan Rohail Hyatt Faisal Rafi,0.847556,0.2659999999999999,0.0,0.6532891999999999
+Hindi,sadness,10,Tujhe Kitna Chahne Lage,Arijit Singh,0.847556,0.2659999999999999,0.0,0.6532891999999999
+Hindi,joy,1,Party On My Mind,Pritam KK Shefali Alvares Yo Yo Honey Singh Prashant Ingole,0.956236,0.3754898152640963,0.0,0.7293651999999999
+Hindi,joy,2,"Party All Night (From ""Boss"")",Yo Yo Honey Singh,0.955362,0.3738354911916386,0.0,0.7267534
+Hindi,joy,3,One Two Three Four (Get On The Dance Floor),Vishal-Shekhar Vishal Dadlani Hamsika Iyer,0.949816,0.364,0.0,0.7258712
+Hindi,joy,4,Dance Basanti,Sachin-Jigar Vishal Dadlani Anushka Manchanda,0.949816,0.364,0.0,0.7228711999999999
+Hindi,joy,5,Lungi Dance,Yo Yo Honey Singh,0.949816,0.364,0.0,0.7228711999999999
+Hindi,joy,6,"Aaj Ki Raat (From ""Stree 2"")",Sachin-Jigar Madhubanti Bagchi Divya Kumar Amitabh Bhattacharya,0.847556,0.2659999999999999,0.0,0.6662891999999999
+Hindi,joy,7,Aaj Ki Raat,Sachin-Jigar Madhubanti Bagchi Divya Kumar Amitabh Bhattacharya,0.847556,0.2659999999999999,0.0,0.6502892
+Hindi,love,1,Ishq Wala Love,Vishal-Shekhar Shekhar Ravjiani Salim Merchant Neeti Mohan,0.987497,0.4782886493719807,0.0,0.7572478999999999
+Hindi,love,2,Ishq Tera,Guru Randhawa,0.987166,0.4761774079872601,0.0,0.7460162
+Hindi,love,3,Pehla Pyaar,Vishal Mishra Armaan Malik,0.956994,0.376952102852825,0.0,0.7378958
+Hindi,love,4,Tere Pyaar Mein,Pritam Arijit Singh Amitabh Bhattacharya Nikhita Gandhi,0.956095,0.3752209580597927,0.0,0.7372665
+Hindi,love,5,Phir Mohabbat,Mohammed Irfan Arijit Singh Saim Bhat,0.959288,0.3815278955094824,0.0,0.7345016
+Hindi,love,6,Ishq Bulaava,Vishal-Shekhar Sanam Puri Shipra Goyal,0.956172,0.3753677554809397,0.0,0.7343203999999999
+Hindi,love,7,"Phir Mohabbat (From ""Murder 2"")",Mohammed Irfan Arijit Singh Saim Bhat,0.957874,0.3786782237648614,0.0,0.7335118
+Hindi,love,8,Ye Ishq Hai,Pritam Shreya Ghoshal Irshad Kamil,0.955782,0.3746259884371312,0.0,0.7320473999999999
+Hindi,love,9,Tum Ho Mera Pyar,KK Suzanne,0.898768,0.3034439184188345,0.0,0.6851376
+Hindi,love,10,Meri Jaan,Sanjay Leela Bhansali Neeti Mohan,0.739993,0.2124296337519047,0.0,0.5739951
+Hindi,anger,1,I Hate Luv Storys,Vishal-Shekhar Vishal Dadlani,0.949816,0.364,0.0,0.7208712
+Hindi,anger,2,"Hai Dil Ye Mera (From ""Hate Story 2"")",Arijit Singh,0.906087,0.364,0.0,0.6922609
+Hindi,fear,1,"Channa Ve - From ""Bhoot - Part One: The Haunted Ship""",Mansheel Gujral Akhil Sachdeva,0.99694,0.5916566200240779,0.0,0.764858
+Hindi,surprise,1,Ajab Si,Vishal-Shekhar KK,0.990358,0.4993117615072306,0.0,0.7642505999999999
+Hindi,surprise,2,"Ajab Si (From ""Om Shanti Om"")",KK,0.989607,0.4932502900295406,0.0,0.7477249
+Hindi,surprise,3,Twist,Neeraj Shridhar Pritam,0.962946,0.3900885016141596,0.0,0.7300622
+Hindi,surprise,4,"Mere Nishaan (From ""Oh My God"")",Kailash Kher Meet Bros Anjjan,0.847556,0.2659999999999999,0.0,0.6492892
+Punjabi,sadness,1,So Dukh Kaisa Paave,Jassie Gill Jaya Kishori Gurnazar,0.989946,0.4959267094380458,0.0,0.7389622
+Punjabi,sadness,2,Kalla Sohna Nai,Akhil,0.957567,0.3780730367822016,0.0,0.7212969
+Punjabi,sadness,3,Kalla Changa,Ninja Jaani,0.95887,0.3806763669167107,0.0,0.719209
+Punjabi,sadness,4,Kalli Sohni,Arjan Dhillon,0.949816,0.364,0.0,0.7158712
+Punjabi,sadness,5,"Bewafai Kar Gaya - From ""Lekh""",B Praak,0.956861,0.3766932382764437,0.0,0.7158027
+Punjabi,sadness,6,Kite Kalli,Maninder Buttar,0.949816,0.364,0.0,0.7128712
+Punjabi,sadness,7,Kalli Ho Gai,Jass Manak,0.949816,0.364,0.0,0.7098712
+Punjabi,sadness,8,Broken Heart,Siippyy Gill,0.920014,0.364,0.0,0.6920098
+Punjabi,sadness,9,Broken Heart,Nawab SEERAT BAJWA,0.920014,0.364,0.0,0.6910098
+Punjabi,sadness,10,Regret,Sidhu Moose Wala,0.480538,0.1225240321895093,0.0,0.39037659999999996
+Punjabi,joy,1,This Party Getting Hot,Jazzy B Yo Yo Honey Singh,0.955885,0.3748220941333528,0.0,0.7251195
+Punjabi,joy,2,Dance Like,Harrdy Sandhu Jaani,0.949816,0.364,0.0,0.7188712
+Punjabi,joy,3,"Sauda Khara Khara - From ""Good Newwz""",Diljit Dosanjh Sukhbir Dhvani Bhanushali Dj Chetas Lijo George Kumaar,0.949816,0.364,0.0,0.7188712
+Punjabi,joy,4,Daaru Party,Millind Gaba,0.958171,0.3792692574079387,0.0,0.7187197
+Punjabi,joy,5,Enna Khush Rakhuga,Sucha Yaar,0.949816,0.364,0.0,0.7128712
+Punjabi,joy,6,Khush Reha Kar,Rajvir Jawanda,0.949816,0.364,0.0,0.7118712
+Punjabi,joy,7,Good Luck,Garry Sandhu Rahul Sathu,0.949816,0.364,0.0,0.7108712
+Punjabi,joy,8,Kala Tikka,Ravneet,0.461777,0.1164996968823292,0.0,0.37124389999999996
+Punjabi,joy,9,Kala Chashma,Prem Hardeep Amar Arshi Badshah Neha Kakkar Indeep Bakshi Amrik Singh,0.455073,0.1143395911814756,0.0,0.36755109999999996
+Punjabi,joy,10,Kala Jaadu,Arjan Dhillon Yung Delic,0.367527,0.1167362828138428,0.0,0.30626889999999996
+Punjabi,love,1,One Love,Shubh,0.954606,0.3724289814069872,0.0,0.7382241999999999
+Punjabi,love,2,Filhaal2 Mohabbat,B Praak Akshay Kumar Nupur Sanon Ammy Virk,0.958909,0.3807554256511535,0.0,0.7282363000000001
+Punjabi,love,3,Nira Ishq,Guri,0.956998,0.3769590125682812,0.0,0.7278986000000001
+Punjabi,love,4,Dil Tu Jaan Tu,Gurnazar Chet Singh,0.938082,0.3776053751852322,0.0,0.7266573999999999
+Punjabi,love,5,Saada Pyaar,AP Dhillon Gurinder Gill Money Musik,0.956704,0.3763902971940098,0.0,0.7256928
+Punjabi,love,6,Pyaar Hoya,HUSTINDER,0.956873,0.3767176736451666,0.0,0.7238111
+Punjabi,love,7,Tera Mera Viah,Jass Manak,0.698584,0.196,0.0,0.5440088
+Punjabi,love,8,Tera Saath,Talwiinder Vylom,0.698584,0.196,0.0,0.5400088
+Punjabi,love,9,Forever,Tegi Pannu Manni Sandhu Prem Lata,0.456008,0.1146410311638435,0.0,0.3752056
+Punjabi,love,10,Ishq,Nirvair Pannu,0.465806,0.1177958872172196,0.0,0.37506419999999996
+Punjabi,anger,1,"Qatal (From ""Warning"")",Jordan Sandhu Shree Brar,0.935195,0.3816250749036435,0.0,0.7016365
+Punjabi,anger,2,Winning Speech,Karan Aujla Mxrci,0.847556,0.2659999999999999,0.0,0.6622891999999999
+Punjabi,anger,3,MVP,Shubh,0.847556,0.2659999999999999,0.0,0.6612891999999999
+Punjabi,anger,4,King Shit,Shubh,0.847556,0.2659999999999999,0.0,0.6612891999999999
+Punjabi,anger,5,Case,Diljit Dosanjh Intense,0.84491,0.2659999999999999,0.0,0.6524369999999999
+Punjabi,anger,6,No Love,Shubh,0.781013,0.2659999999999999,0.0,0.6127091
+Punjabi,fear,1,Nightmare,Chandra Brar MixSingh,0.964039,0.3918514719943362,0.0,0.7218273
+Punjabi,fear,2,"Qatal (From ""Warning"")",Jordan Sandhu Shree Brar,0.033092,0.1143074235146895,0.0,0.0701644
+Punjabi,surprise,1,Kamaal Ho Gea,Satinder Sartaaj Manan Bhardwaj,0.959794,0.3825715642167415,0.0,0.7208558
+Punjabi,surprise,2,Zohrajabeen,B Praak Jaani,0.847556,0.2659999999999999,0.0,0.6402892
