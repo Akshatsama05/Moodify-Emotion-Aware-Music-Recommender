@@ -1,262 +1,490 @@
-# 🎧 Moodify — Emotion-Aware Music Recommender
+🎧 Moodify — Emotion-Aware Music Recommender
 
-> **Describe how you feel. Moodify finds music that fits the mood.**
+Describe how you feel. Moodify turns your text into an emotion-aware music recommendation experience.
 
-Moodify is an end-to-end **NLP + Machine Learning music recommendation system** that understands a user's natural-language mood and recommends relevant songs from a multilingual music catalogue.
+Moodify is an NLP + machine learning music recommender built with Python, scikit-learn, and Streamlit. It analyzes a user's natural-language mood, predicts one of six emotions, and ranks songs from a multilingual Spotify metadata catalogue using emotion relevance, TF-IDF similarity, and popularity.
 
-The project combines **TF-IDF, a class-balanced Linear SVM, metadata-based emotion relevance, cosine similarity, popularity-aware ranking, multilingual filtering, and Streamlit** into an interactive recommendation application.
+Emotions: sadness · joy · love · anger · fear · surprise
 
----
+✨ Highlights
 
-## ✨ Features
+🧠 Six-class Linear SVM emotion classifier
 
-- 🧠 **Six-emotion NLP classification**
-- 🎯 Emotion-aware music recommendations
-- 📚 **TF-IDF + Linear SVM**
-- 🌍 English, Hindi & Punjabi catalogue
-- 🔎 Natural-language query similarity
-- 🎵 Top-10 recommendations
-- 📈 Popularity-aware ranking
-- 🔀 Mood-aware shuffle
-- 🖼️ Album artwork
-- 🎧 Spotify links
-- 🖥️ Streamlit web application
-- ☁️ Google Colab workflow
-- 🧪 Automated project validation
-- 👥 Human-validation framework for future evaluation
+🔤 TF-IDF unigrams + bigrams for text representation
 
----
+🎵 Metadata/content-based six-emotion song relevance
 
-## 🎯 Problem
+🌍 English, Hindi, and Punjabi catalogue support
 
-Most simple music recommenders rely on listening history, predefined playlists, genres, or popularity.
+🔎 TF-IDF similarity between the user's mood text and song metadata
 
-But sometimes a user simply wants to say:
+📈 Popularity as a secondary ranking signal
 
-> *"I had a terrible day and want something emotional."*
+🎯 Conservative emotion-evidence gate for stronger candidates
 
-Moodify explores a different approach:
+🔀 Emotion-aware shuffle
 
-```text
-Natural-language mood
-        ↓
-Emotion classification
-        ↓
-Emotion-aware ranking
-        ↓
-Personalized recommendations
-💡 How Moodify Works
-              USER
-                │
-                ▼
-       Natural-language mood
-                │
-                ▼
-         TF-IDF Vectorization
-                │
-                ▼
-       Balanced Linear SVM
-                │
-                ▼
-        Predicted Emotion
-                │
-                ▼
-     Catalogue Emotion Relevance
-                │
-        ┌───────┼────────┐
-        ▼       ▼        ▼
-     Lexical  TF-IDF   Genre
-     Cues     Similarity  Cues
-        │       │        │
-        └───────┼────────┘
-                ▼
-       Query Similarity
-                │
-                ▼
-          Popularity
-                │
-                ▼
-        Ranking & Filtering
-                │
-                ▼
-       Top-10 Recommendations
-                │
-                ▼
-        Streamlit Application
-🧠 Emotion Classification
+🖼️ Album artwork + song metadata
 
-Moodify uses six emotion classes:
+🎧 Spotify links when available
 
-Emotion	Description
-😢 Sadness	Sadness, loneliness, grief, heartbreak
-😊 Joy	Happiness, celebration, excitement
-❤️ Love	Romance, affection, attachment
-😠 Anger	Anger, frustration, conflict
-😨 Fear	Fear, anxiety, uncertainty
-😲 Surprise	Shock, amazement, unexpected events
+🖥️ Streamlit application
 
-The production classifier uses:
+☁️ Google Colab launch workflow
 
-TF-IDF Vectorizer
-        ↓
-Linear SVM
+🧪 Offline project validation and smoke tests
 
-with balanced class weighting to reduce the effect of class imbalance.
+🔬 Lightweight TF-IDF prediction explainability
+
+🧩 Optional multimodal integration for externally supplied lyrics/audio features
+
+👥 Optional local human-annotation workflow for future catalogue evaluation
+
+🎯 Problem
+
+A user may know exactly how they feel without knowing what music fits that feeling:
+
+"I know how I feel, but I don't know what music fits that feeling."
+
+Moodify explores whether natural-language mood descriptions can be converted into an emotion-aware recommendation experience without requiring listening history or collaborative-filtering data.
+
+💡 How It Works
+
+┌──────────────────────────┐
+│ User mood description    │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│ TF-IDF text features     │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│ Balanced Linear SVM      │
+└────────────┬─────────────┘
+             ↓
+   predicted emotion
+   + decision-score weights
+             ↓
+┌──────────────────────────┐
+│ Catalogue relevance      │
+│ metadata + content cues  │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│ TF-IDF query similarity  │
+│ + popularity             │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│ Ranked Top 10 songs      │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│ Streamlit UI + Spotify   │
+└──────────────────────────┘
+
+Recommendation score
+
+Rank Score =
+    0.70 × emotion relevance
+  + 0.20 × TF-IDF similarity
+  + 0.10 × normalized popularity
+
+Emotion relevance is deliberately the dominant signal. Similarity personalizes results within the selected emotion, while popularity is a smaller secondary signal.
+
+🤖 Machine Learning
+
+Text representation
+
+Moodify uses scikit-learn TfidfVectorizer with:
+
+lowercase text
+
+unigrams + bigrams
+
+min_df=2
+
+max_features=12000
+
+sublinear_tf=True
+
+Classifier
+
+The production classifier is a balanced LinearSVC:
+
+LinearSVC(
+    class_weight="balanced",
+    random_state=42
+)
+
+The six production classes are preserved directly:
+
+sadness
+joy
+love
+anger
+fear
+surprise
+
+No three-emotion production mapping is used.
+
+Model artifact
+
+The trained production pipeline is stored at:
+
+models/moodify_model.joblib
+
+It contains the TF-IDF vectorizer and Linear SVM used by the application.
 
 📊 Model Performance
 
-The final model was evaluated on a 2,000-example held-out test set.
+The final model is fitted using the 16,000 training + 2,000 validation examples and evaluated on the held-out 2,000-example test split.
 
-Metric	Score
-Accuracy	89.05%
-Balanced Accuracy	85.26%
-Macro-F1	84.38%
-Per-class F1
-Emotion	F1
-Sadness	92.62%
-Joy	91.93%
-Anger	87.66%
-Fear	86.04%
-Love	79.88%
-Surprise	68.15%
+Metric
 
-Note: These metrics evaluate emotion classification from user text. They are not song-emotion accuracy metrics.
+Score
+
+Accuracy
+
+89.05%
+
+Balanced Accuracy
+
+85.26%
+
+Macro-F1
+
+84.38%
+
+Per-class results
+
+Emotion
+
+Precision
+
+Recall
+
+F1
+
+Support
+
+Sadness
+
+93.51%
+
+91.74%
+
+92.62%
+
+581
+
+Joy
+
+92.94%
+
+90.94%
+
+91.93%
+
+695
+
+Love
+
+74.46%
+
+86.16%
+
+79.88%
+
+159
+
+Anger
+
+86.27%
+
+89.09%
+
+87.66%
+
+275
+
+Fear
+
+88.26%
+
+83.93%
+
+86.04%
+
+224
+
+Surprise
+
+66.67%
+
+69.70%
+
+68.15%
+
+66
+
+Important: these metrics evaluate user-text emotion classification. They do not measure objective recognition of song emotion.
+
+Confusion matrix
+
+
 
 🎵 Recommendation Engine
 
-Moodify combines multiple signals when ranking songs.
+The recommender separates user-text classification from catalogue song relevance.
 
-Ranking Formula
-Rank Score =
-    0.70 × Emotion Relevance
-  + 0.20 × TF-IDF Similarity
-  + 0.10 × Popularity
-Why?
-70% Emotion Relevance → keeps recommendations aligned with the user's mood
-20% Query Similarity → matches the user's actual wording
-10% Popularity → provides a secondary discovery signal
+1. Metadata/content relevance
 
-The goal is:
+The bundled catalogue contains metadata including:
 
-Emotion Fit
-     ↓
-Query Relevance
-     ↓
-Popularity
+song title
 
-rather than simply recommending the most popular songs.
+artist
 
-🎯 Example
+album
 
-A user enters:
+genre
 
-I feel lonely and nostalgic. I want something emotional.
+language
 
-Moodify processes the request as:
+popularity
 
-User Text
-   ↓
-TF-IDF
-   ↓
-Linear SVM
-   ↓
-Emotion Prediction
-   ↓
-Catalogue Relevance
-   ↓
-Query Similarity
-   ↓
-Popularity
-   ↓
-Ranking
-   ↓
-Top 10 Songs
+release information
 
-The user can then filter by language, shuffle the recommendations, and open songs through Spotify.
+artwork
+
+Spotify URL
+
+Mood-related numeric fields in the supplied raw catalogue are empty. The project therefore does not treat them as song-emotion ground truth.
+
+Instead, Moodify derives six transparent relevance signals using:
+
+emotion-specific lexical cues
+
+phrase-level cues
+
+English and Romanized Hindi/Punjabi vocabulary
+
+TF-IDF similarity to emotion prototype descriptions
+
+a small genre prior for selected cues
+
+Artist names are excluded from emotion/content scoring to reduce artist-identity leakage.
+
+2. Six-way emotion profile
+
+Each processed song receives:
+
+emotion_prob_sadness
+emotion_prob_joy
+emotion_prob_love
+emotion_prob_anger
+emotion_prob_fear
+emotion_prob_surprise
+
+These values form a comparable six-way relevance profile. A conservative display label can be unclassified when evidence is too weak.
+
+3. Evidence gate
+
+Moodify uses a 0.10 emotion-evidence threshold as a first-tier preference:
+
+Rank candidates using the combined score.
+
+Prefer tracks with emotion evidence ≥ 0.10.
+
+If at least 10 strong candidates exist, return the strongest 10.
+
+If fewer than 10 exist, use the next-best candidates only to complete the requested list.
+
+This is a ranking safeguard, not human validation of song emotion.
+
+4. Duplicate handling
+
+The recommender removes duplicate song_name + artist combinations so repeated catalogue records do not unnecessarily consume recommendation slots.
 
 🌍 Multilingual Catalogue
 
-The current catalogue contains 2,878 tracks:
+The bundled catalogue contains 2,878 songs:
 
-Language	Tracks
-🇬🇧 English	899
-🇮🇳 Hindi	1,000
-🇮🇳 Punjabi	979
-Total	2,878
+Language
 
-The recommendation layer also includes Romanized Indian-language emotion cues.
+Songs
 
-🖥️ Streamlit Application
+Hindi
 
-The main application is implemented in:
+1,000
 
-app.py
+Punjabi
 
-The interface provides:
+979
 
-Natural-language mood input
-Emotion analysis
-Six-emotion selection
-Language filtering
-Top-10 recommendations
-Album artwork
-Artist and album information
-Popularity
-Spotify links
-Shuffle mode
-Recommendation/model information
-🛠️ Tech Stack
-Languages & Frameworks
-Python
-Streamlit
-Machine Learning
-Scikit-learn
-Linear SVM
-TF-IDF
-Cosine Similarity
-Data
-Pandas
-NumPy
-Visualization
-Matplotlib
-Seaborn
-Model & Development
-Joblib
-Jupyter Notebook
-Google Colab
-📁 Project Structure
+English
+
+899
+
+Total
+
+2,878
+
+The application provides language filtering for:
+
+All
+
+English
+
+Hindi
+
+Punjabi
+
+Language filtering changes the recommendation pool; it does not retrain the classifier.
+
+🖥️ Streamlit App
+
+The main application is app.py.
+
+The UI includes:
+
+natural-language mood input
+
+example prompts
+
+six-emotion selection
+
+predicted emotion display
+
+emotion score feedback
+
+language filtering
+
+Top 10 recommendations
+
+emotion-aware shuffle
+
+album artwork
+
+song metadata
+
+Spotify buttons
+
+explanation of the NLP/ranking process
+
+project notes and limitations
+
+The application loads:
+
+models/moodify_model.joblib
+data/processed/labelled_catalogue.csv
+
+An optional multimodal processed catalogue can be preferred when generated by the multimodal preparation workflow.
+
+🧩 Optional Multimodal Extension
+
+Moodify includes an integration layer in src/multimodal.py for legitimate externally supplied emotion profiles.
+
+Metadata emotion profile
+          │
+          ├───────────────┐
+          ▼               ▼
+   Lyrics profile    Audio profile
+          │               │
+          └───────┬───────┘
+                  ▼
+            Fused profile
+                  ▼
+          Recommendation ranker
+
+The bundled repository does not contain fabricated lyrics, audio features, or human labels.
+
+Optional features must be joined using the exact catalogue id, not title alone.
+
+See data/external/README.md for the expected schema and preparation command.
+
+👥 Human Validation Workflow
+
+The current catalogue has no supplied human song-emotion annotations, so the repository does not claim human-validated catalogue accuracy.
+
+Instead, a reproducible annotation workflow is included:
+
+reports/human_validation/annotation_queue_300.csv
+
+The queue contains:
+
+100 English songs
+
+100 Hindi songs
+
+100 Punjabi songs
+
+300 songs total
+
+Tools:
+
+tools/annotation_app.py
+tools/evaluate_human_validation.py
+
+The evaluation workflow supports measures including:
+
+accuracy
+
+balanced accuracy
+
+macro-F1
+
+confusion matrix
+
+annotator agreement / Fleiss' kappa
+
+recommendation Precision@K
+
+NDCG@K
+
+artist diversity
+
+These metrics are meaningful only after real annotations are supplied.
+
+🏗️ Project Structure
+
 Moodify-Emotion-Aware-Music-Recommender/
 │
-├── app.py
-├── requirements.txt
-├── validate_project.py
-├── run_local.py
-├── run_local.bat
-├── run_ngrok.bat
-│
-├── data/
-│   ├── raw/
-│   │   ├── spotify_metadata_catalogue.csv
-│   │   └── ...
-│   ├── processed/
-│   │   └── labelled_catalogue.csv
-│   └── external/
-│
-├── models/
-│   └── moodify_model.joblib
+├── app.py                              # Streamlit application
+├── run_local.py                        # Local launcher + health check
+├── run_local.bat                       # Windows launcher
+├── run_ngrok.bat                       # Optional ngrok launcher
+├── validate_project.py                 # Offline integrity checks
+├── requirements.txt                    # Dependencies
 │
 ├── src/
-│   ├── data.py
-│   ├── emotion_data.py
-│   ├── labeling.py
-│   ├── modeling.py
-│   ├── multimodal.py
-│   └── recommender.py
+│   ├── data.py                         # Catalogue loading/cleaning
+│   ├── emotion_data.py                 # Six-emotion definitions
+│   ├── labeling.py                     # Catalogue emotion relevance
+│   ├── modeling.py                     # Model training/evaluation
+│   ├── recommender.py                  # Prediction + ranking
+│   └── multimodal.py                   # Optional feature fusion
+│
+├── models/
+│   └── moodify_model.joblib            # Production model
+│
+├── data/
+│   ├── raw/spotify_metadata_catalogue.csv
+│   ├── processed/labelled_catalogue.csv
+│   └── external/README.md
 │
 ├── notebooks/
 │   ├── Moodify_End_to_End.ipynb
 │   ├── Moodify_End_to_End_executed.ipynb
 │   └── Streamlit_Colab_Launcher.py
+│
+├── reports/
+│   ├── figures/                         # Evaluation visualizations
+│   ├── human_validation/               # Annotation workflow
+│   ├── catalogue_emotion_recommendation_audit.csv
+│   ├── catalogue_emotion_score_summary.csv
+│   └── LIMITATION_STATUS.md
 │
 ├── tools/
 │   ├── annotation_app.py
@@ -264,177 +492,253 @@ Moodify-Emotion-Aware-Music-Recommender/
 │   ├── evaluate_human_validation.py
 │   └── prepare_multimodal_features.py
 │
-├── reports/
-│   ├── figures/
-│   └── human_validation/
-│
-├── emotion_train.csv
-├── emotion_validation.csv
-├── emotion_test.csv
+├── emotion_train.csv                   # 16,000 training rows
+├── emotion_validation.csv              # 2,000 validation rows
+├── emotion_test.csv                    # 2,000 test rows
 ├── emotion_model_metrics.json
-└── emotion_model_report.md
-🚀 Getting Started
-1. Clone the repository
-git clone https://github.com/Akshatsama05/Moodify-Emotion-Aware-Music-Recommender.git
-cd Moodify-Emotion-Aware-Music-Recommender
+├── emotion_model_report.md
+├── Moodify_Master_Colab.ipynb
+├── LOCAL_RUN_GUIDE.md
+├── DEPENDENCY_MAP.md
+└── FINAL_FIX_REPORT.md
+
+🛠️ Tech Stack
+
+Category
+
+Technologies
+
+Language
+
+Python
+
+ML
+
+scikit-learn, Linear SVM
+
+NLP
+
+TF-IDF, lexical/phrase cues
+
+Data
+
+Pandas, NumPy
+
+Visualization
+
+Matplotlib, Seaborn
+
+Model persistence
+
+Joblib
+
+UI
+
+Streamlit
+
+Notebook
+
+Jupyter Notebook, Google Colab
+
+Optional tunneling
+
+Cloudflare Quick Tunnel, ngrok
+
+🚀 Run Locally
+
+1. Create a virtual environment
+
+Windows:
+
+python -m venv .venv
+.venv\Scripts\activate
+
+macOS/Linux:
+
+python3 -m venv .venv
+source .venv/bin/activate
+
 2. Install dependencies
+
 pip install -r requirements.txt
-3. Run Moodify
+
+3. Start Moodify
+
 streamlit run app.py
 
-Then open:
-
-http://127.0.0.1:8501
-🪟 Windows
-
-You can also use:
-
-run_local.bat
-
-or:
+Or use the project launcher:
 
 python run_local.py local
+
+The local launcher starts Streamlit on port 8501 and performs a health check.
+
+For Windows, run_local.bat is also available.
+
+Optional ngrok mode
+
+If NGROK_AUTHTOKEN is configured:
+
+python run_local.py ngrok
+
+ngrok is not required for normal local use.
+
 ☁️ Google Colab
 
-The repository includes an end-to-end Colab workflow:
+The repository includes:
 
 Moodify_Master_Colab.ipynb
 
-The notebook covers:
+The end-to-end workflow covers model training/evaluation, catalogue processing, artifact verification, recommendation smoke tests, and Streamlit launching.
 
-Dataset preparation
-Model training
-Model evaluation
-Catalogue processing
-Recommendation testing
-Model artifact verification
-Streamlit launch
+A dedicated launcher is also available:
 
-An executed notebook is also included:
+notebooks/Streamlit_Colab_Launcher.py
 
-Moodify_Master_Colab_executed.ipynb
-🧪 Validation
+It starts the real Streamlit application, checks its local health endpoint, and attempts a Cloudflare Quick Tunnel. An ngrok fallback is available when NGROK_AUTHTOKEN is supplied.
+
+🧪 Validate the Project
 
 Run:
 
 python validate_project.py
 
-The project's validation checks cover key production assumptions such as:
+The validation script checks the model classes, catalogue size, six emotion score/profile columns, recommendation paths, normalized model scores, validation queue, and limitation documentation.
 
-Six emotion classes
-Model availability
-Catalogue size
-Six-way emotion features
-Recommendation generation
-SVM score normalization
-Documented limitation status
-⚠️ Important Limitation
+Expected output:
 
-The bundled music catalogue contains metadata, but it does not provide human-labelled song-emotion ground truth.
+MODEL_CLASSES_OK
+CATALOGUE_ROWS_OK 2878
+SIX_EMOTION_RECOMMENDATIONS_OK
+SVM_SCORE_NORMALIZATION_OK
+LIMITATION_STATUS_OK
 
-Therefore:
+🔬 Explainability
 
-User text → emotion classification
+src/recommender.py includes explain_prediction().
 
-is a supervised ML task with held-out evaluation.
+It inspects the TF-IDF representation and returns influential terms for the predicted Linear SVM class, providing a lightweight view of which text features contributed to a prediction.
 
-Whereas:
+⚠️ Limitations & Responsible Interpretation
 
-Song metadata → emotion relevance
+Moodify intentionally separates validated ML results from heuristic catalogue signals.
 
-is a metadata/content-based recommendation signal.
+Validated
 
-So Moodify should not be interpreted as a scientifically validated system that objectively detects the emotional state of a song.
+User-text emotion classification on a held-out 2,000-row test set.
 
-The 89.05% accuracy reported above refers specifically to user-text emotion classification.
+Six-class production model.
 
-🔬 Human Validation
+Offline recommendation/integrity checks.
 
-The repository contains infrastructure for future human validation:
+Deterministic metadata/content relevance pipeline.
 
-tools/annotation_app.py
-tools/evaluate_human_validation.py
-tools/create_annotation_queue.py
+Not currently validated
 
-A 300-song annotation queue is included for:
+The bundled music catalogue does not provide:
 
-English
-Hindi
-Punjabi
+human song-emotion labels;
 
-Future evaluation can include:
+lyrics;
 
-Accuracy
-Balanced Accuracy
-Macro-F1
-Fleiss' Kappa
-Precision@K
-NDCG@K
-Artist Diversity
+audio-derived emotion features;
 
-Human song-emotion accuracy is not claimed until real annotations are collected.
+psychological ground truth for song emotion.
 
-🧩 Future Improvements
-Human-validated song-emotion dataset
-Lyrics-based emotion modelling
-Audio-based emotion modelling
-Multimodal metadata + lyrics + audio fusion
-Stronger multilingual NLP
-Transformer-based semantic retrieval
-Personalized recommendation using user feedback
-Learning-to-rank recommendation models
-Recommendation diversity and novelty optimization
-📌 Project Highlights
-2,878
-Songs
+Therefore, Moodify should not claim that a song is objectively happy, sad, angry, etc. based on the current catalogue layer.
 
-20,000
-Emotion Text Examples
+The supported interpretation is:
 
-6
-Emotion Classes
+Moodify ranks songs using metadata/content-based emotion relevance signals.
 
-3
-Languages
+Human annotation and multimodal integrations are provided as extension paths for future evidence-based evaluation.
 
-89.05%
-Test Accuracy
+🔮 Future Improvements
 
-84.38%
-Macro-F1
+Human-labelled song-emotion dataset with multiple independent annotators.
+
+Lyrics-based emotion modelling using legitimately available/licensed data.
+
+Audio emotion modelling using validated audio features or models.
+
+Probability calibration for the Linear SVM instead of treating softmax-transformed decision values as probability-like ranking weights.
+
+Learning-to-rank using real human relevance judgements or user feedback.
+
+Personalization using likes, skips, history, or playlist interactions.
+
+Recommendation evaluation using Precision@K, NDCG@K, diversity, and coverage on genuinely labelled data.
+
+🧱 Engineering Decisions
+
+Why Linear SVM?
+
+TF-IDF creates a high-dimensional sparse text representation where linear classifiers are efficient and effective. Linear SVM is therefore a practical choice for the six-class text classification task.
+
+Why balanced class weights?
+
+The emotion classes are not equally represented. class_weight="balanced" helps reduce bias toward the larger classes.
+
+Why separate text classification from song relevance?
+
+The text dataset has supervised emotion labels, while the bundled song catalogue does not. Separating the two prevents unsupported song-emotion ground-truth claims.
+
+Why exclude artists from mood scoring?
+
+Artist identity can introduce accidental correlations unrelated to the mood expressed by the metadata. Mood/content scoring therefore uses song title, album, genre, and language rather than artist identity.
+
+Why use an evidence gate?
+
+Metadata can be sparse. The evidence gate gives stronger candidates first priority while still allowing the ranking system to complete a Top 10 list when enough catalogue candidates exist.
+
+📌 Project Status
+
+Functional ML/NLP prototype with:
+
+trained six-class emotion model;
+
+multilingual 2,878-song catalogue;
+
+metadata/content recommendation layer;
+
+Streamlit interface;
+
+local and Colab launch workflows;
+
+offline validation;
+
+optional human-validation tooling;
+
+optional multimodal integration path.
+
+The strongest supported project claim is:
+
+Six-class emotion classification of user text combined with metadata/content-based music ranking.
+
 👨‍💻 Author
 
 Akshat Sajwan
+B.Tech Computer Science student focused on Python, Machine Learning, NLP, and AI/ML application development.
 
-B.Tech Computer Science student interested in:
+📚 Documentation
 
-Machine Learning · NLP · AI · Computer Vision · Python · Data Science
+For deeper technical details, see:
+
+emotion_model_report.md — model evaluation
+
+FINAL_FIX_REPORT.md — engineering fixes and limitations
+
+DEPENDENCY_MAP.md — component dependencies
+
+LOCAL_RUN_GUIDE.md — local execution notes
+
+reports/LIMITATION_STATUS.md — evidence/limitation status
+
+data/external/README.md — optional multimodal schema
+
+reports/human_validation/ANNOTATION_INSTRUCTIONS.md — annotation workflow
 
 ⭐ Project Summary
 
-Moodify demonstrates a complete machine-learning application workflow:
+Moodify = NLP + Machine Learning + Recommendation + Streamlit
 
-Data
- ↓
-Preprocessing
- ↓
-Feature Engineering
- ↓
-TF-IDF
- ↓
-Model Training
- ↓
-Model Evaluation
- ↓
-Emotion-Aware Ranking
- ↓
-Recommendation
- ↓
-Streamlit Deployment
-
-The project focuses on building a practical recommendation system while keeping a clear distinction between validated model results and metadata-based recommendation assumptions.
-
-
-This is the version I would use for the **fresh repository**. It is much more recruiter-friendly: the first screen immediately tells them **what Moodify is, what ML you used, the actual result, and how the recommendation works**, instead of making them scroll through a technical audit. The underlying project facts come from the project files you uploaded and the validated repository state. :contentReference[oaicite:0]{index=0}
-
-After pasting it into GitHub's `README.md` editor, click **Preview** first. **Do not commit until you check the rendered page.**
+The project demonstrates an end-to-end pipeline from natural-language input → emotion classification → content-aware relevance → ranking → interactive music recommendations, while keeping measured model performance separate from unvalidated song-emotion assumptions.
