@@ -45,12 +45,7 @@ Emotion classification
 Emotion-aware ranking
         ↓
 Personalized recommendations
-
-
-
-How Moodify Works
-
-
+💡 How Moodify Works
               USER
                 │
                 ▼
@@ -88,8 +83,6 @@ How Moodify Works
                 │
                 ▼
         Streamlit Application
-
-
 🧠 Emotion Classification
 
 Moodify uses six emotion classes:
